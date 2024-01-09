@@ -1,6 +1,32 @@
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
+  function fetchData() {
+    fetch('https://anapioficeandfire.com/api/books')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        // Further code logic here
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
   
+  // Call the function to initiate the fetch request
+  fetchData()
+.then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      // Further code logic here
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
 
 function renderBooks(books) {
@@ -14,4 +40,4 @@ function renderBooks(books) {
 
 document.addEventListener('DOMContentLoaded', function() {
   fetchBooks();
-});
+});  // Close the DOMContentLoaded callback
